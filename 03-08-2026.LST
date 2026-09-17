@@ -1,0 +1,633 @@
+select * from tab;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+TABLE1                         TABLE                                            
+DH_STUD                        TABLE                                            
+HD_STUD                        TABLE                                            
+USER_PGDCA                     TABLE                                            
+BONUS                          TABLE                                            
+SALGRADE                       TABLE                                            
+EMPLOYEES                      TABLE                                            
+PRODUCTS                       TABLE                                            
+SALES                          TABLE                                            
+BIN$ZXwOHFO2TnatCv6mcfIecg==$0 TABLE                                            
+EMP                            TABLE                                            
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+PROJECT                        TABLE                                            
+BIN$Y6we4pedSIao982kyB5Jkg==$0 TABLE                                            
+BIN$Fwjyx2V1R6+Vj5OHC60Ufw==$0 TABLE                                            
+EMP2                           TABLE                                            
+PRODUCT                        TABLE                                            
+ISHIKA                         TABLE                                            
+ISHIKA_S                       TABLE                                            
+BIN$VOL0vKxyQRKHJcB924VcQQ==$0 TABLE                                            
+TEST1                          TABLE                                            
+STUD3                          TABLE                                            
+BIN$IriOIjaMSnyBJc7OvCNGKQ==$0 TABLE                                            
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+BIN$Mxs1hmeRRPKcv7iLPZefAg==$0 TABLE                                            
+CUS                            TABLE                                            
+EMPLOYEE                       TABLE                                            
+S                              TABLE                                            
+COLLAGE                        TABLE                                            
+BIN$ZjgcL/k+ThuuREvAc9BN4w==$0 TABLE                                            
+ELECTION                       TABLE                                            
+ROLLUP                         TABLE                                            
+PRINCE                         TABLE                                            
+CLG                            TABLE                                            
+DEPT_ISHIKA                    TABLE                                            
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+HD_ELECTION                    TABLE                                            
+ISHITA                         TABLE                                            
+BIN$6KPnEiR0Q/+uyVI6Sc4GQg==$0 TABLE                                            
+DEPARTMENT                     TABLE                                            
+EMP_ISHIKA                     TABLE                                            
+BIN$018yUYCCSX6AIEtsCe37Uw==$0 TABLE                                            
+EMPLOYEEE                      TABLE                                            
+BIN$vmb/NsC+QE+yvhyCo/TGTA==$0 TABLE                                            
+EMP1                           TABLE                                            
+STUD2                          TABLE                                            
+PERSON                         TABLE                                            
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+TEST                           TABLE                                            
+STUDENT                        TABLE                                            
+SUPPLIES                       TABLE                                            
+SUPPLIER                       TABLE                                            
+DEPT                           TABLE                                            
+SUPPLIERS                      TABLE                                            
+CUSTOMERS                      TABLE                                            
+BIN$E/J4WUhJR1GI8TwRc9tKow==$0 TABLE                                            
+BIN$LcvOrHfmQ9WygqwRY1cq2w==$0 TABLE                                            
+BIN$2qe20re1Qgyv7qClU9SRPQ==$0 TABLE                                            
+CUSTOMER                       TABLE                                            
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+MONSTER                        TABLE                                            
+MAHI1                          TABLE                                            
+
+57 rows selected.
+
+SQL> desc emp_ishika;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                    NOT NULL NUMBER(10)
+ EMP_NAME                                           VARCHAR2(20)
+ POST                                               VARCHAR2(20)
+ MGR_ID                                             NUMBER(10)
+ HIRE_DATE                                          DATE
+ SALARY                                             NUMBER(10)
+ COMMISION                                          NUMBER(10)
+ DEPT_ID                                            NUMBER(10)
+
+SQL> create table ishika_sql (emp_name varchar2(20), emp_no number(10), emp_salary number(10),location varchar2(20));
+
+Table created.
+
+SQL> desc ishika_sql;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_NAME                                           VARCHAR2(20)
+ EMP_NO                                             NUMBER(10)
+ EMP_SALARY                                         NUMBER(10)
+ LOCATION                                           VARCHAR2(20)
+
+SQL> insert into ishika_sql (emp_name,emp_no,emp_salary,location)values('rita pirasiya',23242,209800,'surat');
+
+1 row created.
+
+SQL>  insert into ishika_sql (emp_name,emp_no,emp_salary,location)values('hema sorathiya',41562,32000,'jamnagar');
+
+1 row created.
+
+SQL>  insert into ishika_sql (emp_name,emp_no,emp_salary,location)values('amit nagr',13452,84000,'himmatnagar');
+
+1 row created.
+
+SQL>  insert into ishika_sql (emp_name,emp_no,emp_salary,location)values('diravi patel',24567,20100,'vadodra');
+
+1 row created.
+
+SQL>  insert into ishika_sql (emp_name,emp_no,emp_salary,location)values('himanshu jumariya',28743,50000,'ahemdabad');
+
+1 row created.
+
+SQL> select * from ishika_sql;
+
+EMP_NAME                 EMP_NO EMP_SALARY LOCATION                             
+-------------------- ---------- ---------- --------------------                 
+rita pirasiya             23242     209800 surat                                
+hema sorathiya            41562      32000 jamnagar                             
+amit nagr                 13452      84000 himmatnagar                          
+diravi patel              24567      20100 vadodra                              
+himanshu jumariya         28743      50000 ahemdabad                            
+
+SQL> commit;
+
+Commit complete.
+
+SQL>  desc emp_ishika;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                    NOT NULL NUMBER(10)
+ EMP_NAME                                           VARCHAR2(20)
+ POST                                               VARCHAR2(20)
+ MGR_ID                                             NUMBER(10)
+ HIRE_DATE                                          DATE
+ SALARY                                             NUMBER(10)
+ COMMISION                                          NUMBER(10)
+ DEPT_ID                                            NUMBER(10)
+
+SQL> select * from emp_ishika;
+
+    EMP_ID EMP_NAME             POST                     MGR_ID HIRE_DATE       
+---------- -------------------- -------------------- ---------- ---------       
+    SALARY  COMMISION    DEPT_ID                                                
+---------- ---------- ----------                                                
+     12345 BansiPadia           CLERK                           18-NOV-90       
+     15000                    10                                                
+                                                                                
+     13254 Radha Sharma         Salesman                  12345 25-NOV-90       
+     12000       4000         20                                                
+                                                                                
+     12675 TanmayDomadiya       President                       05-JUL-85       
+    124000                    10                                                
+                                                                                
+
+    EMP_ID EMP_NAME             POST                     MGR_ID HIRE_DATE       
+---------- -------------------- -------------------- ---------- ---------       
+    SALARY  COMMISION    DEPT_ID                                                
+---------- ---------- ----------                                                
+     13457 Suraj Prakash        Salesman                  12345 12-AUG-92       
+     14650       1700         30                                                
+                                                                                
+     14567 Seema Lava           programmer                13654 17-JUL-94       
+     35000                    10                                                
+                                                                                
+     16754 Krupa Vala           Programmer                13654 13-AUG-92       
+     30000                    10                                                
+                                                                                
+
+    EMP_ID EMP_NAME             POST                     MGR_ID HIRE_DATE       
+---------- -------------------- -------------------- ---------- ---------       
+    SALARY  COMMISION    DEPT_ID                                                
+---------- ---------- ----------                                                
+     14562 Kalpana Joshi        Clerk                           17-SEP-90       
+     17000                    40                                                
+                                                                                
+     12435 KevalRaval           Salesman                  12345 20-OCT-90       
+     18000       6500         20                                                
+                                                                                
+     13654 ParthVasoya          Analyst                   12675 27-DEC-95       
+     90000                    10                                                
+                                                                                
+
+    EMP_ID EMP_NAME             POST                     MGR_ID HIRE_DATE       
+---------- -------------------- -------------------- ---------- ---------       
+    SALARY  COMMISION    DEPT_ID                                                
+---------- ---------- ----------                                                
+     18654 Ramesh Vasoya        Analyst                   12675 15-MAY-93       
+     85000                    10                                                
+                                                                                
+
+10 rows selected.
+
+SQL> select * from emp_ishika where emp_name,post,emp_salary;
+select * from emp_ishika where emp_name,post,emp_salary
+                                       *
+ERROR at line 1:
+ORA-00920: invalid relational operator 
+
+
+SQL> select emp_name,post,emp_salary from emp_ishika;
+select emp_name,post,emp_salary from emp_ishika
+                     *
+ERROR at line 1:
+ORA-00904: "EMP_SALARY": invalid identifier 
+
+
+SQL> select emp
+  2  
+SQL> 
+SQL> 
+SQL> select emp_name,post,salary from emp_ishika;
+
+EMP_NAME             POST                     SALARY                            
+-------------------- -------------------- ----------                            
+BansiPadia           CLERK                     15000                            
+Radha Sharma         Salesman                  12000                            
+TanmayDomadiya       President                124000                            
+Suraj Prakash        Salesman                  14650                            
+Seema Lava           programmer                35000                            
+Krupa Vala           Programmer                30000                            
+Kalpana Joshi        Clerk                     17000                            
+KevalRaval           Salesman                  18000                            
+ParthVasoya          Analyst                   90000                            
+Ramesh Vasoya        Analyst                   85000                            
+
+10 rows selected.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> SELECT SUM(basic_salary + allowance - deduction) AS total_salaryFROM employees;
+SELECT SUM(basic_salary + allowance - deduction) AS total_salaryFROM employees
+                                                                     *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> SELECT SUM(salary) AS total_salaryFROM ishika_sql;
+SELECT SUM(salary) AS total_salaryFROM ishika_sql
+                                       *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> SELECT SUM(salary) AS total_salaryFROM ishika_sql;
+SELECT SUM(salary) AS total_salaryFROM ishika_sql
+                                       *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> SELECT SUM(salary) AS TOTAL_SALARY FROM ishika_sql
+  2  ;
+SELECT SUM(salary) AS TOTAL_SALARY FROM ishika_sql
+           *
+ERROR at line 1:
+ORA-00904: "SALARY": invalid identifier 
+
+
+SQL> 
+SQL>  SELECT SUM(salary) AS TOTAL_SALARY FROM emp_ishika;
+
+TOTAL_SALARY                                                                    
+------------                                                                    
+      440650                                                                    
+
+SQL> select * from dept_ishika where location='Anand';
+
+   DEPA_NO DEPA_NAME            LOCATION                                        
+---------- -------------------- --------------------                            
+        40 FINANCE              Anand                                           
+
+SQL> desc dept_ishika;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEPA_NO                                   NOT NULL NUMBER(10)
+ DEPA_NAME                                          VARCHAR2(20)
+ LOCATION                                           VARCHAR2(20)
+
+SQL> select * from dept_ishika;
+
+   DEPA_NO DEPA_NAME            LOCATION                                        
+---------- -------------------- --------------------                            
+        10 IT                   Ananad                                          
+        20 SALES                Bombay                                          
+        30 PURCHASE             Surat                                           
+        40 FINANCE              Anand                                           
+        50 MARKETING            Surat                                           
+
+SQL> select * from dept_no where depa_no=10,20,40;
+select * from dept_no where depa_no=10,20,40
+                                      *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> select * from dept_ishika where depa_no IN (10,20,40);
+
+   DEPA_NO DEPA_NAME            LOCATION                                        
+---------- -------------------- --------------------                            
+        10 IT                   Ananad                                          
+        20 SALES                Bombay                                          
+        40 FINANCE              Anand                                           
+
+SQL>                                                                                                select * from dept_ishika where depa_no=50;
+
+   DEPA_NO DEPA_NAME            LOCATION                                        
+---------- -------------------- --------------------                            
+        50 MARKETING            Surat                                           
+
+SQL> select * from dept_ishika where depa_name IN (IT,SALES,MARKETING);
+select * from dept_ishika where depa_name IN (IT,SALES,MARKETING)
+                                                       *
+ERROR at line 1:
+ORA-00904: "MARKETING": invalid identifier 
+
+
+SQL> select * from dept_ishika where depa_name IN ('IT','SALES','MARKETING');
+
+   DEPA_NO DEPA_NAME            LOCATION                                        
+---------- -------------------- --------------------                            
+        10 IT                   Ananad                                          
+        20 SALES                Bombay                                          
+        50 MARKETING            Surat                                           
+
+SQL> SELECT * FROM EMP_ISHIKA WHERE IN POST='ANALYST' OR SALARY > 50000;
+SELECT * FROM EMP_ISHIKA WHERE IN POST='ANALYST' OR SALARY > 50000
+                               *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> select * from emp_ishika where post='analyst' or salary>50000;
+
+    EMP_ID EMP_NAME             POST                     MGR_ID HIRE_DATE       
+---------- -------------------- -------------------- ---------- ---------       
+    SALARY  COMMISION    DEPT_ID                                                
+---------- ---------- ----------                                                
+     12675 TanmayDomadiya       President                       05-JUL-85       
+    124000                    10                                                
+                                                                                
+     13654 ParthVasoya          Analyst                   12675 27-DEC-95       
+     90000                    10                                                
+                                                                                
+     18654 Ramesh Vasoya        Analyst                   12675 15-MAY-93       
+     85000                    10                                                
+                                                                                
+
+SQL> SELECT *FROM employeesWHERE job <> 'PRESIDENT';
+SELECT *FROM employeesWHERE job <> 'PRESIDENT'
+                                *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> SELECT *FROM employeesWHERE job <> 'PRESIDENT';
+SELECT *FROM employeesWHERE job <> 'PRESIDENT'
+                                *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> SELECT *FROM employeesWHERE job <> 'PRESIDENT';
+SELECT *FROM employeesWHERE job <> 'PRESIDENT'
+                                *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> SELECT *FROM emp_ishikaWHERE job <> 'PRESIDENT';
+SELECT *FROM emp_ishikaWHERE job <> 'PRESIDENT'
+                                 *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> select * from emp_ishika where post <> 'president';
+
+    EMP_ID EMP_NAME             POST                     MGR_ID HIRE_DATE       
+---------- -------------------- -------------------- ---------- ---------       
+    SALARY  COMMISION    DEPT_ID                                                
+---------- ---------- ----------                                                
+     12345 BansiPadia           CLERK                           18-NOV-90       
+     15000                    10                                                
+                                                                                
+     13254 Radha Sharma         Salesman                  12345 25-NOV-90       
+     12000       4000         20                                                
+                                                                                
+     12675 TanmayDomadiya       President                       05-JUL-85       
+    124000                    10                                                
+                                                                                
+
+    EMP_ID EMP_NAME             POST                     MGR_ID HIRE_DATE       
+---------- -------------------- -------------------- ---------- ---------       
+    SALARY  COMMISION    DEPT_ID                                                
+---------- ---------- ----------                                                
+     13457 Suraj Prakash        Salesman                  12345 12-AUG-92       
+     14650       1700         30                                                
+                                                                                
+     14567 Seema Lava           programmer                13654 17-JUL-94       
+     35000                    10                                                
+                                                                                
+     16754 Krupa Vala           Programmer                13654 13-AUG-92       
+     30000                    10                                                
+                                                                                
+
+    EMP_ID EMP_NAME             POST                     MGR_ID HIRE_DATE       
+---------- -------------------- -------------------- ---------- ---------       
+    SALARY  COMMISION    DEPT_ID                                                
+---------- ---------- ----------                                                
+     14562 Kalpana Joshi        Clerk                           17-SEP-90       
+     17000                    40                                                
+                                                                                
+     12435 KevalRaval           Salesman                  12345 20-OCT-90       
+     18000       6500         20                                                
+                                                                                
+     13654 ParthVasoya          Analyst                   12675 27-DEC-95       
+     90000                    10                                                
+                                                                                
+
+    EMP_ID EMP_NAME             POST                     MGR_ID HIRE_DATE       
+---------- -------------------- -------------------- ---------- ---------       
+    SALARY  COMMISION    DEPT_ID                                                
+---------- ---------- ----------                                                
+     18654 Ramesh Vasoya        Analyst                   12675 15-MAY-93       
+     85000                    10                                                
+                                                                                
+
+10 rows selected.
+
+SQL>  select * from emp_ishika where POST <>='President';
+ select * from emp_ishika where POST <>='President'
+                                       *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL>  select * from emp_ishika where POST <>'President';
+
+    EMP_ID EMP_NAME             POST                     MGR_ID HIRE_DATE       
+---------- -------------------- -------------------- ---------- ---------       
+    SALARY  COMMISION    DEPT_ID                                                
+---------- ---------- ----------                                                
+     12345 BansiPadia           CLERK                           18-NOV-90       
+     15000                    10                                                
+                                                                                
+     13254 Radha Sharma         Salesman                  12345 25-NOV-90       
+     12000       4000         20                                                
+                                                                                
+     12675 TanmayDomadiya       President                       05-JUL-85       
+    124000                    10                                                
+                                                                                
+
+    EMP_ID EMP_NAME             POST                     MGR_ID HIRE_DATE       
+---------- -------------------- -------------------- ---------- ---------       
+    SALARY  COMMISION    DEPT_ID                                                
+---------- ---------- ----------                                                
+     13457 Suraj Prakash        Salesman                  12345 12-AUG-92       
+     14650       1700         30                                                
+                                                                                
+     14567 Seema Lava           programmer                13654 17-JUL-94       
+     35000                    10                                                
+                                                                                
+     16754 Krupa Vala           Programmer                13654 13-AUG-92       
+     30000                    10                                                
+                                                                                
+
+    EMP_ID EMP_NAME             POST                     MGR_ID HIRE_DATE       
+---------- -------------------- -------------------- ---------- ---------       
+    SALARY  COMMISION    DEPT_ID                                                
+---------- ---------- ----------                                                
+     14562 Kalpana Joshi        Clerk                           17-SEP-90       
+     17000                    40                                                
+                                                                                
+     12435 KevalRaval           Salesman                  12345 20-OCT-90       
+     18000       6500         20                                                
+                                                                                
+     13654 ParthVasoya          Analyst                   12675 27-DEC-95       
+     90000                    10                                                
+                                                                                
+
+    EMP_ID EMP_NAME             POST                     MGR_ID HIRE_DATE       
+---------- -------------------- -------------------- ---------- ---------       
+    SALARY  COMMISION    DEPT_ID                                                
+---------- ---------- ----------                                                
+     18654 Ramesh Vasoya        Analyst                   12675 15-MAY-93       
+     85000                    10                                                
+                                                                                
+
+10 rows selected.
+
+SQL> select * from emp_ishika WHERE POST <> 'President';
+
+    EMP_ID EMP_NAME             POST                     MGR_ID HIRE_DATE       
+---------- -------------------- -------------------- ---------- ---------       
+    SALARY  COMMISION    DEPT_ID                                                
+---------- ---------- ----------                                                
+     12345 BansiPadia           CLERK                           18-NOV-90       
+     15000                    10                                                
+                                                                                
+     13254 Radha Sharma         Salesman                  12345 25-NOV-90       
+     12000       4000         20                                                
+                                                                                
+     12675 TanmayDomadiya       President                       05-JUL-85       
+    124000                    10                                                
+                                                                                
+
+    EMP_ID EMP_NAME             POST                     MGR_ID HIRE_DATE       
+---------- -------------------- -------------------- ---------- ---------       
+    SALARY  COMMISION    DEPT_ID                                                
+---------- ---------- ----------                                                
+     13457 Suraj Prakash        Salesman                  12345 12-AUG-92       
+     14650       1700         30                                                
+                                                                                
+     14567 Seema Lava           programmer                13654 17-JUL-94       
+     35000                    10                                                
+                                                                                
+     16754 Krupa Vala           Programmer                13654 13-AUG-92       
+     30000                    10                                                
+                                                                                
+
+    EMP_ID EMP_NAME             POST                     MGR_ID HIRE_DATE       
+---------- -------------------- -------------------- ---------- ---------       
+    SALARY  COMMISION    DEPT_ID                                                
+---------- ---------- ----------                                                
+     14562 Kalpana Joshi        Clerk                           17-SEP-90       
+     17000                    40                                                
+                                                                                
+     12435 KevalRaval           Salesman                  12345 20-OCT-90       
+     18000       6500         20                                                
+                                                                                
+     13654 ParthVasoya          Analyst                   12675 27-DEC-95       
+     90000                    10                                                
+                                                                                
+
+    EMP_ID EMP_NAME             POST                     MGR_ID HIRE_DATE       
+---------- -------------------- -------------------- ---------- ---------       
+    SALARY  COMMISION    DEPT_ID                                                
+---------- ---------- ----------                                                
+     18654 Ramesh Vasoya        Analyst                   12675 15-MAY-93       
+     85000                    10                                                
+                                                                                
+
+10 rows selected.
+
+SQL> SELECT *FROM emp_ishikaWHERE TRIM(post) <> 'President';
+SELECT *FROM emp_ishikaWHERE TRIM(post) <> 'President'
+                                 *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> SELECT *FROM emp_ishikaWHERE post <> 'PRESIDENT';
+SELECT *FROM emp_ishikaWHERE post <> 'PRESIDENT'
+                                  *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> SELECT *FROM emp_ishikaWHERE post <> 'PRESIDENT';
+SELECT *FROM emp_ishikaWHERE post <> 'PRESIDENT'
+                                  *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> SELECT * FROM emp_ishika WHERE post <> 'PRESIDENT';
+
+    EMP_ID EMP_NAME             POST                     MGR_ID HIRE_DATE       
+---------- -------------------- -------------------- ---------- ---------       
+    SALARY  COMMISION    DEPT_ID                                                
+---------- ---------- ----------                                                
+     12345 BansiPadia           CLERK                           18-NOV-90       
+     15000                    10                                                
+                                                                                
+     13254 Radha Sharma         Salesman                  12345 25-NOV-90       
+     12000       4000         20                                                
+                                                                                
+     12675 TanmayDomadiya       President                       05-JUL-85       
+    124000                    10                                                
+                                                                                
+
+    EMP_ID EMP_NAME             POST                     MGR_ID HIRE_DATE       
+---------- -------------------- -------------------- ---------- ---------       
+    SALARY  COMMISION    DEPT_ID                                                
+---------- ---------- ----------                                                
+     13457 Suraj Prakash        Salesman                  12345 12-AUG-92       
+     14650       1700         30                                                
+                                                                                
+     14567 Seema Lava           programmer                13654 17-JUL-94       
+     35000                    10                                                
+                                                                                
+     16754 Krupa Vala           Programmer                13654 13-AUG-92       
+     30000                    10                                                
+                                                                                
+
+    EMP_ID EMP_NAME             POST                     MGR_ID HIRE_DATE       
+---------- -------------------- -------------------- ---------- ---------       
+    SALARY  COMMISION    DEPT_ID                                                
+---------- ---------- ----------                                                
+     14562 Kalpana Joshi        Clerk                           17-SEP-90       
+     17000                    40                                                
+                                                                                
+     12435 KevalRaval           Salesman                  12345 20-OCT-90       
+     18000       6500         20                                                
+                                                                                
+     13654 ParthVasoya          Analyst                   12675 27-DEC-95       
+     90000                    10                                                
+                                                                                
+
+    EMP_ID EMP_NAME             POST                     MGR_ID HIRE_DATE       
+---------- -------------------- -------------------- ---------- ---------       
+    SALARY  COMMISION    DEPT_ID                                                
+---------- ---------- ----------                                                
+     18654 Ramesh Vasoya        Analyst                   12675 15-MAY-93       
+     85000                    10                                                
+                                                                                
+
+10 rows selected.
+
+SQL> 

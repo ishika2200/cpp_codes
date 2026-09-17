@@ -1,0 +1,579 @@
+select AVG (price) from item_master where company_code=16;
+
+AVG(PRICE)                                                                      
+----------                                                                      
+       100                                                                      
+
+SQL> select item_name,pricefrom item_master where price=(select MIN (price) from items);
+select item_name,pricefrom item_master where price=(select MIN (price) from items)
+                                       *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select item_name,price from item_master where price=(select MIN (price) from items);
+select item_name,price from item_master where price=(select MIN (price) from items)
+                                                                             *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL>  select item_name,price from item_master where price=(select MIN (price) from item_master);
+
+ITEM_NAME                 PRICE                                                 
+-------------------- ----------                                                 
+fryums                      100                                                 
+
+SQL> create table clients (c_no NUMBER(10),c_name VARCHAR2(20),city VARCHAR2(20),state VARCHAR2(20),post VARCHAR2(20),salary NUMBER(10));
+
+Table created.
+
+SQL> DESC CLIENTS;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ C_NO                                               NUMBER(10)
+ C_NAME                                             VARCHAR2(20)
+ CITY                                               VARCHAR2(20)
+ STATE                                              VARCHAR2(20)
+ POST                                               VARCHAR2(20)
+ SALARY                                             NUMBER(10)
+
+SQL> insert into clients (c-no,c_name,city,state,post,salary)values(14,'harsh','rajkot','gujarat','clerk',50000);
+insert into clients (c-no,c_name,city,state,post,salary)values(14,'harsh','rajkot','gujarat','clerk',50000)
+                      *
+ERROR at line 1:
+ORA-00917: missing comma 
+
+
+SQL>  insert into clients (c_no,c_name,city,state,post,salary)values(14,'harsh','rajkot','gujarat','clerk',50000);
+
+1 row created.
+
+SQL>  insert into clients (c_no,c_name,city,state,post,salary)values(23,'amit','ahemdabad','gujarat','manager',60000);
+
+1 row created.
+
+SQL>  insert into clients (c_no,c_name,city,state,post,salary)values(20,'arya','surat','gujarat','programmer',75000);
+
+1 row created.
+
+SQL>  insert into clients (c_no,c_name,city,state,post,salary)values(30,'kashish','mumbai','maharastra','developer',100000);
+
+1 row created.
+
+SQL>  insert into clients (c_no,c_name,city,state,post,salary)values(35,'rahul','pune','maharastra','manager',83000);
+
+1 row created.
+
+SQL>  insert into clients (c_no,c_name,city,state,post,salary)values(5,'arjun','surat','gujarat','president',185000);
+
+1 row created.
+
+SQL> select * from clients;
+
+      C_NO               C_NAME               CITY                 STATE                      
+---------- -------------------- -------------------- --------------------       
+POST                     SALARY                                                 
+-------------------- ----------                                                 
+        14 harsh                rajkot               gujarat                    
+clerk                     50000                                                 
+                                                                                
+        23 amit                 ahemdabad            gujarat                    
+manager                   60000                                                 
+                                                                                
+        20 arya                 surat                gujarat                    
+programmer                75000                                                 
+                                                                                
+
+      C_NO C_NAME               CITY                 STATE                      
+---------- -------------------- -------------------- --------------------       
+POST                     SALARY                                                 
+-------------------- ----------                                                 
+        30 kashish              mumbai               maharastra                 
+developer                100000                                                 
+                                                                                
+        35 rahul                pune                 maharastra                 
+manager                   83000                                                 
+                                                                                
+         5 arjun                surat                gujarat                    
+president                185000                                                 
+                                                                                
+
+6 rows selected.
+
+SQL> select * from clients where post='manager';
+
+      C_NO C_NAME               CITY                 STATE                      
+---------- -------------------- -------------------- --------------------       
+POST                     SALARY                                                 
+-------------------- ----------                                                 
+        23 amit                 ahemdabad            gujarat                    
+manager                   60000                                                 
+                                                                                
+        35 rahul                pune                 maharastra                 
+manager                   83000                                                 
+                                                                                
+
+SQL> select * from clients where state='gujarat' and salary<100000;
+
+      C_NO C_NAME               CITY                 STATE                      
+---------- -------------------- -------------------- --------------------       
+POST                     SALARY                                                 
+-------------------- ----------                                                 
+        14 harsh                rajkot               gujarat                    
+clerk                     50000                                                 
+                                                                                
+        23 amit                 ahemdabad            gujarat                    
+manager                   60000                                                 
+                                                                                
+        20 arya                 surat                gujarat                    
+programmer                75000                                                 
+                                                                                
+
+SQL> select * from clients where post IN ('clerk','manager');
+
+      C_NO C_NAME               CITY                 STATE                      
+---------- -------------------- -------------------- --------------------       
+POST                     SALARY                                                 
+-------------------- ----------                                                 
+        14 harsh                rajkot               gujarat                    
+clerk                     50000                                                 
+                                                                                
+        23 amit                 ahemdabad            gujarat                    
+manager                   60000                                                 
+                                                                                
+        35 rahul                pune                 maharastra                 
+manager                   83000                                                 
+                                                                                
+
+SQL> select * from clients where post='developer';
+
+      C_NO C_NAME               CITY                 STATE                      
+---------- -------------------- -------------------- --------------------       
+POST                     SALARY                                                 
+-------------------- ----------                                                 
+        30 kashish              mumbai               maharastra                 
+developer                100000                                                 
+                                                                                
+
+SQL> select * from clients where city='surat' and c_name like 'A%';
+
+no rows selected
+
+SQL>  select * from clients where city='surat' and c_name like 'a%';
+
+      C_NO C_NAME               CITY                 STATE                      
+---------- -------------------- -------------------- --------------------       
+POST                     SALARY                                                 
+-------------------- ----------                                                 
+        20 arya                 surat                gujarat                    
+programmer                75000                                                 
+                                                                                
+         5 arjun                surat                gujarat                    
+president                185000                                                 
+                                                                                
+
+SQL> create table is_stud (rollno NUMBER(10),name varchar2(20),city varchar2(20),address varchar2(20),dob DATE,class varchar2(20),mobile number(10),age number(10));
+
+Table created.
+
+SQL> desc is_stud;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ROLLNO                                             NUMBER(10)
+ NAME                                               VARCHAR2(20)
+ CITY                                               VARCHAR2(20)
+ ADDRESS                                            VARCHAR2(20)
+ DOB                                                DATE
+ CLASS                                              VARCHAR2(20)
+ MOBILE                                             NUMBER(10)
+ AGE                                                NUMBER(10)
+
+SQL> insert into is_stud (rollno,name,city,address,dob,class,mobile,age)values(10,'rohan','vadodra','nehrunagar',DATE '2007-04-22','sem-2','9834193212',19);
+
+1 row created.
+
+SQL> 
+SQL>  insert into is_stud (rollno,name,city,address,dob,class,mobile,age)values(11,'riya','surat','adajan',DATE '2006-05-20','sem-2','9342103210',20);
+
+1 row created.
+
+SQL> 
+SQL>  insert into is_stud (rollno,name,city,address,dob,class,mobile,age)values(12,'jay','jamnagar','main road',DATE '2005-02-10','sem-3','9863215034',21);
+
+1 row created.
+
+SQL> 
+SQL>  insert into is_stud (rollno,name,city,address,dob,class,mobile,age)values(13,'neha','rajkot','university road',DATE '2008-03-12','sem-2','9132456921',17);
+
+1 row created.
+
+SQL> 
+SQL>  insert into is_stud (rollno,name,city,address,dob,class,mobile,age)values(14,'karan','ahemdabad','CG road',DATE '2004-07-25','sem-4','9832159832',22);
+
+1 row created.
+
+SQL> select * from clients;
+
+      C_NO C_NAME               CITY                 STATE                      
+---------- -------------------- -------------------- --------------------       
+POST                     SALARY                                                 
+-------------------- ----------                                                 
+        14 harsh                rajkot               gujarat                    
+clerk                     50000                                                 
+                                                                                
+        23 amit                 ahemdabad            gujarat                    
+manager                   60000                                                 
+                                                                                
+        20 arya                 surat                gujarat                    
+programmer                75000                                                 
+                                                                                
+
+      C_NO C_NAME               CITY                 STATE                      
+---------- -------------------- -------------------- --------------------       
+POST                     SALARY                                                 
+-------------------- ----------                                                 
+        30 kashish              mumbai               maharastra                 
+developer                100000                                                 
+                                                                                
+        35 rahul                pune                 maharastra                 
+manager                   83000                                                 
+                                                                                
+         5 arjun                surat                gujarat                    
+president                185000                                                 
+                                                                                
+
+6 rows selected.
+
+SQL> select * from is_stud;
+
+    ROLLNO NAME                 CITY                 ADDRESS                    
+---------- -------------------- -------------------- --------------------       
+DOB       CLASS                    MOBILE        AGE                            
+--------- -------------------- ---------- ----------                            
+        10 rohan                vadodra              nehrunagar                 
+22-APR-07 sem-2                9834193212         19                            
+                                                                                
+        11 riya                 surat                adajan                     
+20-MAY-06 sem-2                9342103210         20                            
+                                                                                
+        12 jay                  jamnagar             main road                  
+10-FEB-05 sem-3                9863215034         21                            
+                                                                                
+
+    ROLLNO NAME                 CITY                 ADDRESS                    
+---------- -------------------- -------------------- --------------------       
+DOB       CLASS                    MOBILE        AGE                            
+--------- -------------------- ---------- ----------                            
+        13 neha                 rajkot               university road            
+12-MAR-08 sem-2                9132456921         17                            
+                                                                                
+        14 karan                ahemdabad            CG road                    
+25-JUL-04 sem-4                9832159832         22                            
+                                                                                
+
+SQL> select * from is_stud where age<=18;
+
+    ROLLNO NAME                 CITY                 ADDRESS                    
+---------- -------------------- -------------------- --------------------       
+DOB       CLASS                    MOBILE        AGE                            
+--------- -------------------- ---------- ----------                            
+        13 neha                 rajkot               university road            
+12-MAR-08 sem-2                9132456921         17                            
+                                                                                
+
+SQL> select name,age from is_stud ORDER BY name ASC,age DESC;
+
+NAME                        AGE                                                 
+-------------------- ----------                                                 
+jay                          21                                                 
+karan                        22                                                 
+neha                         17                                                 
+riya                         20                                                 
+rohan                        19                                                 
+
+SQL> update is_stud SET city='jamnagar' where city='rajkot';
+
+1 row updated.
+
+SQL> commit;
+
+Commit complete.
+
+SQL>  select * from is_stud;
+
+    ROLLNO NAME                 CITY                 ADDRESS                    
+---------- -------------------- -------------------- --------------------       
+DOB       CLASS                    MOBILE        AGE                            
+--------- -------------------- ---------- ----------                            
+        10 rohan                vadodra              nehrunagar                 
+22-APR-07 sem-2                9834193212         19                            
+                                                                                
+        11 riya                 surat                adajan                     
+20-MAY-06 sem-2                9342103210         20                            
+                                                                                
+        12 jay                  jamnagar             main road                  
+10-FEB-05 sem-3                9863215034         21                            
+                                                                                
+
+    ROLLNO NAME                 CITY                 ADDRESS                    
+---------- -------------------- -------------------- --------------------       
+DOB       CLASS                    MOBILE        AGE                            
+--------- -------------------- ---------- ----------                            
+        13 neha                 jamnagar             university road            
+12-MAR-08 sem-2                9132456921         17                            
+                                                                                
+        14 karan                ahemdabad            CG road                    
+25-JUL-04 sem-4                9832159832         22                            
+                                                                                
+
+SQL> update is_stud SET class='sem-3' where rollno=10;
+
+1 row updated.
+
+SQL> select * from is_stud;
+
+    ROLLNO NAME                 CITY                 ADDRESS                    
+---------- -------------------- -------------------- --------------------       
+DOB       CLASS                    MOBILE        AGE                            
+--------- -------------------- ---------- ----------                            
+        10 rohan                vadodra              nehrunagar                 
+22-APR-07 sem-3                9834193212         19                            
+                                                                                
+        11 riya                 surat                adajan                     
+20-MAY-06 sem-2                9342103210         20                            
+                                                                                
+        12 jay                  jamnagar             main road                  
+10-FEB-05 sem-3                9863215034         21                            
+                                                                                
+
+    ROLLNO NAME                 CITY                 ADDRESS                    
+---------- -------------------- -------------------- --------------------       
+DOB       CLASS                    MOBILE        AGE                            
+--------- -------------------- ---------- ----------                            
+        13 neha                 jamnagar             university road            
+12-MAR-08 sem-2                9132456921         17                            
+                                                                                
+        14 karan                ahemdabad            CG road                    
+25-JUL-04 sem-4                9832159832         22                            
+                                                                                
+
+SQL> delete from is_stud where age>20;
+
+2 rows deleted.
+
+SQL> select * from is_stud;
+
+    ROLLNO NAME                 CITY                 ADDRESS                    
+---------- -------------------- -------------------- --------------------       
+DOB       CLASS                    MOBILE        AGE                            
+--------- -------------------- ---------- ----------                            
+        10 rohan                vadodra              nehrunagar                 
+22-APR-07 sem-3                9834193212         19                            
+                                                                                
+        11 riya                 surat                adajan                     
+20-MAY-06 sem-2                9342103210         20                            
+                                                                                
+        13 neha                 jamnagar             university road            
+12-MAR-08 sem-2                9132456921         17                            
+                                                                                
+
+SQL> delete from is_stud where city='jamnagar' AND class!='sem-3';
+
+1 row deleted.
+
+SQL> create table salesman (s_id number(10),s_name varchar2(20),city varchar2(20),sal number(10),commision number(10));
+
+Table created.
+
+SQL> desc salesman;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ S_ID                                               NUMBER(10)
+ S_NAME                                             VARCHAR2(20)
+ CITY                                               VARCHAR2(20)
+ SAL                                                NUMBER(10)
+ COMMISION                                          NUMBER(10)
+
+SQL> insert into (s_id,s_name,city,sal,commision)values (350,'rajeshbhai','bagodra',20000,2000);
+insert into (s_id,s_name,city,sal,commision)values (350,'rajeshbhai','bagodra',20000,2000)
+             *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword 
+
+
+SQL>  insert into salesman  (s_id,s_name,city,sal,commision)values (350,'rajeshbhai','bagodra',20000,2000);
+
+1 row created.
+
+SQL>  insert into salesman  (s_id,s_name,city,sal,commision)values (210,'kishanbhai','baroda',15000,3000);
+
+1 row created.
+
+SQL>  insert into salesman  (s_id,s_name,city,sal,commision)values (320,'nileshbhai','rajkot',17000,1200);
+
+1 row created.
+
+SQL>  insert into salesman  (s_id,s_name,city,sal,commision)values (8,'hiteshbhai','delhi',25000,8000);
+
+1 row created.
+
+SQL>  insert into salesman  (s_id,s_name,city,sal,commision)values (9,'satishbhai','pune',33000,1200);
+
+1 row created.
+
+SQL>  insert into salesman  (s_id,s_name,city,sal,commision)values (12,'pareshbhai','mumbai',30000,1000);
+
+1 row created.
+
+SQL>  insert into salesman  (s_id,s_name,city,sal,commision)values (15,'lalitbhai','bombay',28000,2000);
+
+1 row created.
+
+SQL> select * from salesman;
+
+      S_ID S_NAME               CITY                        SAL  COMMISION      
+---------- -------------------- -------------------- ---------- ----------      
+       350 rajeshbhai           bagodra                   20000       2000      
+       210 kishanbhai           baroda                    15000       3000      
+       320 nileshbhai           rajkot                    17000       1200      
+         8 hiteshbhai           delhi                     25000       8000      
+         9 satishbhai           pune                      33000       1200      
+        12 pareshbhai           mumbai                    30000       1000      
+        15 lalitbhai            bombay                    28000       2000      
+
+7 rows selected.
+
+SQL> select * from salesman where city='mumbai';
+
+      S_ID S_NAME               CITY                        SAL  COMMISION      
+---------- -------------------- -------------------- ---------- ----------      
+        12 pareshbhai           mumbai                    30000       1000      
+
+SQL> select MAX(commision) AS maximum_commision from salesman;
+
+MAXIMUM_COMMISION                                                               
+-----------------                                                               
+             8000                                                               
+
+SQL> select s_name from salesman where sal=3000;
+
+no rows selected
+
+SQL> update salesman SET sal=3000 where s_id=12;
+
+1 row updated.
+
+SQL> select * from salesman;
+
+      S_ID S_NAME               CITY                        SAL  COMMISION      
+---------- -------------------- -------------------- ---------- ----------      
+       350 rajeshbhai           bagodra                   20000       2000      
+       210 kishanbhai           baroda                    15000       3000      
+       320 nileshbhai           rajkot                    17000       1200      
+         8 hiteshbhai           delhi                     25000       8000      
+         9 satishbhai           pune                      33000       1200      
+        12 pareshbhai           mumbai                     3000       1000      
+        15 lalitbhai            bombay                    28000       2000      
+
+7 rows selected.
+
+SQL>  select s_name from salesman where sal=3000;
+
+S_NAME                                                                          
+--------------------                                                            
+pareshbhai                                                                      
+
+SQL> > update is_stud SET city='jamnagar' where city='rajkot';
+SP2-0734: unknown command beginning "> update i..." - rest of line ignored.
+SQL> update salesman SET city=pune where s_id=8;
+update salesman SET city=pune where s_id=8
+                         *
+ERROR at line 1:
+ORA-00904: "PUNE": invalid identifier 
+
+
+SQL> select * from salesman city='pune' where s_id=8;
+select * from salesman city='pune' where s_id=8
+                           *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> update salesman SET city='pune' where s_id=8;
+
+1 row updated.
+
+SQL> select * from salesman;
+
+      S_ID S_NAME               CITY                        SAL  COMMISION      
+---------- -------------------- -------------------- ---------- ----------      
+       350 rajeshbhai           bagodra                   20000       2000      
+       210 kishanbhai           baroda                    15000       3000      
+       320 nileshbhai           rajkot                    17000       1200      
+         8 hiteshbhai           pune                      25000       8000      
+         9 satishbhai           pune                      33000       1200      
+        12 pareshbhai           mumbai                     3000       1000      
+        15 lalitbhai            bombay                    28000       2000      
+
+7 rows selected.
+
+SQL> 
+SQL> update salesman SET sal=3500  where s_id=350;
+
+1 row updated.
+
+SQL> select * from salesman;
+
+      S_ID S_NAME               CITY                        SAL  COMMISION      
+---------- -------------------- -------------------- ---------- ----------      
+       350 rajeshbhai           bagodra                    3500       2000      
+       210 kishanbhai           baroda                    15000       3000      
+       320 nileshbhai           rajkot                    17000       1200      
+         8 hiteshbhai           pune                      25000       8000      
+         9 satishbhai           pune                      33000       1200      
+        12 pareshbhai           mumbai                     3000       1000      
+        15 lalitbhai            bombay                    28000       2000      
+
+7 rows selected.
+
+SQL> delete from salesman where sal=3500;
+
+1 row deleted.
+
+SQL> select * from salesman;
+
+      S_ID S_NAME               CITY                        SAL  COMMISION      
+---------- -------------------- -------------------- ---------- ----------      
+       210 kishanbhai           baroda                    15000       3000      
+       320 nileshbhai           rajkot                    17000       1200      
+         8 hiteshbhai           pune                      25000       8000      
+         9 satishbhai           pune                      33000       1200      
+        12 pareshbhai           mumbai                     3000       1000      
+        15 lalitbhai            bombay                    28000       2000      
+
+6 rows selected.
+
+SQL> select * from salesman where s_name like 's%';
+
+      S_ID S_NAME               CITY                        SAL  COMMISION      
+---------- -------------------- -------------------- ---------- ----------      
+         9 satishbhai           pune                      33000       1200      
+
+SQL> select * from salesman where city IN ('bombay','delhi','pune');
+
+      S_ID S_NAME               CITY                        SAL  COMMISION      
+---------- -------------------- -------------------- ---------- ----------      
+         8 hiteshbhai           pune                      25000       8000      
+         9 satishbhai           pune                      33000       1200      
+        15 lalitbhai            bombay                    28000       2000      
+
+SQL> create table production (p_no number(10),description varchar2(20),profit number(10),unit number(10),qty number(10),s_price number(10),c_price number(10));
+
+Table created.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> 

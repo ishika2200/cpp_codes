@@ -1,0 +1,44 @@
+#include <iostream.h>
+#include<conio.h>
+
+int main()
+{
+    int arr[10];      // Array to store elements
+    int n;            // Number of elements
+    int search;       // Element to search
+    int i;
+    int found = 0;    // 0 = Not found, 1 = Found
+
+    cout << "Enter the number of elements: ";
+    cin >> n;
+
+    cout << "Enter the elements:\n";
+    for(i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+    }
+
+    cout << "Enter the element to search: ";
+    cin >> search;
+
+    // Linear Search
+    for(i = 0; i < n; i++)
+    {
+        if(arr[i] == search)
+        {
+            found = 1;
+            break;
+        }
+    }
+
+    if(found == 1)
+    {
+        cout << "Element found at position " << i + 1;
+    }
+    else
+    {
+        cout << "Element not found.";
+    }
+
+    return 0;
+}
