@@ -1,0 +1,608 @@
+SET SERVEROUTPUT ON;DECLARE    num NUMBER := &num;BEGIN    FOR i IN 1..10 LOOP        DBMS_OUTPUT.PUT_LINE(num || ' x ' || i || ' = ' || (num * i));    END LOOP;END;/
+Enter value for num: 5
+SP2-0158: unknown SET option ";DECLARE"
+SQL> DECLARE
+  2  num NUMBER := &num;
+  3  BEGIN
+  4   FOR i IN 1..10 LOOP
+  5    DBMS_OUTPUT.PUT_LINE(num || ' x ' || i || ' = ' || (num * i));
+  6      END LOOP;
+  7  END;
+  8  /
+Enter value for num: 2
+old   2: num NUMBER := &num;
+new   2: num NUMBER := 2;
+2 x 1 = 2                                                                       
+2 x 2 = 4                                                                       
+2 x 3 = 6                                                                       
+2 x 4 = 8                                                                       
+2 x 5 = 10                                                                      
+2 x 6 = 12                                                                      
+2 x 7 = 14                                                                      
+2 x 8 = 16                                                                      
+2 x 9 = 18                                                                      
+2 x 10 = 20                                                                     
+
+PL/SQL procedure successfully completed.
+
+SQL> SET SERVEROUTPUT ON;DECLARE    -- Variable to store the year (substitute &enter_year with a hardcoded value if not using substitution variables)    v_year NUMBER := &enter_year; BEGIN    -- Check leap year conditions    IF (MOD(v_year, 4) = 0 AND MOD(v_year, 100) != 0) OR (MOD(v_year, 400) = 0) THEN        DBMS_OUTPUT.PUT_LINE(v_year || ' is a Leap Year.');    ELSE        DBMS_OUTPUT.PUT_LINE(v_year || ' is NOT a Leap Year.');    END IF;END;/
+Enter value for enter_year: 2024
+Enter value for enter_year: 2020
+SP2-0158: unknown SET option ";DECLARE"
+SQL> DECLARE
+  2  v_year NUMBER := &enter_year;
+  3  BEGIN
+  4  IF (MOD(v_year, 4) = 0 AND MOD(v_year, 100) != 0) OR (MOD(v_year, 400) = 0) THEN
+  5  DBMS_OUTPUT.PUT_LINE(v_year || ' is a Leap Year.');
+  6      ELSE
+  7          DBMS_OUTPUT.PUT_LINE(v_year || ' is NOT a Leap Year.');
+  8      END IF;
+  9  END;
+ 10  /
+Enter value for enter_year: 2020
+old   2: v_year NUMBER := &enter_year;
+new   2: v_year NUMBER := 2020;
+2020 is a Leap Year.                                                            
+
+PL/SQL procedure successfully completed.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> DECLARE
+  2      v_counter NUMBER := 1; -- Initialize the counter
+  3  BEGIN
+  4      WHILE v_counter <= 5 LOOP
+  5          DBMS_OUTPUT.PUT_LINE(v_counter);
+  6          v_counter := v_counter + 1; -- Increment the counter
+  7      END LOOP;
+  8  END;
+  9  /
+1                                                                               
+2                                                                               
+3                                                                               
+4                                                                               
+5                                                                               
+
+PL/SQL procedure successfully completed.
+
+SQL> DECLARE
+  2      v_counter NUMBER := 1; -- Initialize the counter
+  3  BEGIN
+  4      WHILE v_counter <= 5 LOOP
+  5          DBMS_OUTPUT.PUT_LINE(v_counter);
+  6          v_counter := v_counter + 1; -- Increment the counter
+  7      END LOOP;
+  8  END;
+  9  /
+1                                                                               
+2                                                                               
+3                                                                               
+4                                                                               
+5                                                                               
+
+PL/SQL procedure successfully completed.
+
+SQL> SET SERVEROUTPUT ON;
+SQL> 
+SQL> DECLARE
+  2      v_counter NUMBER := 1; -- Initialize the counter
+  3  BEGIN
+  4      WHILE v_counter <= 5 LOOP
+  5          DBMS_OUTPUT.PUT_LINE(v_counter);
+  6          v_counter := v_counter + 1; -- Increment the counter
+  7      END LOOP;
+  8  END;
+  9  /
+1                                                                               
+2                                                                               
+3                                                                               
+4                                                                               
+5                                                                               
+
+PL/SQL procedure successfully completed.
+
+SQL> DECLARE
+  2      v_counter NUMBER := 1;
+  3  BEGIN
+  4      WHILE v_counter <= 5 LOOP
+  5          DBMS_OUTPUT.PUT_LINE(v_counter);
+  6          v_counter := v_counter + 1;
+  7  END LOOP;
+  8  END;
+  9  /
+1                                                                               
+2                                                                               
+3                                                                               
+4                                                                               
+5                                                                               
+
+PL/SQL procedure successfully completed.
+
+SQL> SET SERVEROUTPUT ON;
+SQL> 
+SQL>  DECLARE
+  2       v_counter NUMBER := 1;
+  3   BEGIN
+  4       WHILE v_counter <= 5 LOOP
+  5           DBMS_OUTPUT.PUT_LINE(v_counter);
+  6           v_counter := v_counter + 1;
+  7   END LOOP;
+  8   END;
+  9   /
+1                                                                               
+2                                                                               
+3                                                                               
+4                                                                               
+5                                                                               
+
+PL/SQL procedure successfully completed.
+
+SQL> SET SERVEROUTPUT ON;DECLARE    v_counter NUMBER := 1; -- Initialize the counterBEGIN    LOOP        DBMS_OUTPUT.PUT_LINE(v_counter);        v_counter := v_counter + 1; -- Increment the counter                -- Exit condition        EXIT WHEN v_counter > 5;    END LOOP;END;/
+SP2-0158: unknown SET option ";DECLARE"
+SQL> DECLARE
+  2      v_counter NUMBER := 1;
+  3  BEGIN
+  4      LOOP
+  5          DBMS_OUTPUT.PUT_LINE(v_counter);
+  6          v_counter := v_counter + 1;
+  7  EXIT WHEN v_counter > 5;
+  8      END LOOP;
+  9  END;
+ 10  /
+1                                                                               
+2                                                                               
+3                                                                               
+4                                                                               
+5                                                                               
+
+PL/SQL procedure successfully completed.
+
+SQL> Generate a PL/SQL block to print 1 to 10 number using simple loop
+SP2-0734: unknown command beginning "Generate a..." - rest of line ignored.
+SQL> SET SERVEROUTPUT ON;DECLARE    v_counter NUMBER := 1; -- Initialize the counterBEGIN    LOOP        DBMS_OUTPUT.PUT_LINE(v_counter);        v_counter := v_counter + 1; -- Increment the counter                -- Exit condition        EXIT WHEN v_counter > 5;    END LOOP;END;/
+SP2-0158: unknown SET option ";DECLARE"
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> DECLARE
+  2      v_counter NUMBER := 1;
+  3  BEGIN
+  4      LOOP
+  5          DBMS_OUTPUT.PUT_LINE(v_counter);
+  6          v_counter := v_counter + 1;
+  7  EXIT WHEN v_counter > 5;
+  8      END LOOP;
+  9  END;
+ 10  /
+1                                                                               
+2                                                                               
+3                                                                               
+4                                                                               
+5                                                                               
+
+PL/SQL procedure successfully completed.
+
+SQL> SET SERVEROUTPUT ON;DECLARE    v_counter NUMBER := 1;BEGIN    LOOP        DBMS_OUTPUT.PUT_LINE(v_counter);        v_counter := v_counter + 1;        EXIT WHEN v_counter > 10;    END LOOP;END;/
+SP2-0158: unknown SET option ";DECLARE"
+SQL> SET SERVEROUTPUT ON;DECLARE    v_counter NUMBER := 1;BEGIN    LOOP        DBMS_OUTPUT.PUT_LINE(v_counter);        v_counter := v_counter + 1;        EXIT WHEN v_counter > 10;    END LOOP;END;/
+SP2-0158: unknown SET option ";DECLARE"
+SQL> 
+SQL> 
+SQL> DECLARE
+  2      v_counter NUMBER := 1;
+  3  BEGIN
+  4      LOOP
+  5          DBMS_OUTPUT.PUT_LINE(v_counter);
+  6          v_counter := v_counter + 1;
+  7          EXIT WHEN v_counter > 10;
+  8      END LOOP;
+  9  END;
+ 10  /
+1                                                                               
+2                                                                               
+3                                                                               
+4                                                                               
+5                                                                               
+6                                                                               
+7                                                                               
+8                                                                               
+9                                                                               
+10                                                                              
+
+PL/SQL procedure successfully completed.
+
+SQL> SET SERVEROUTPUT ON;
+SQL> 
+SQL> BEGIN
+  2      FOR v_counter IN 1..10 LOOP
+  3          DBMS_OUTPUT.PUT_LINE(v_counter);
+  4      END LOOP;
+  5  END;
+  6  /
+1                                                                               
+2                                                                               
+3                                                                               
+4                                                                               
+5                                                                               
+6                                                                               
+7                                                                               
+8                                                                               
+9                                                                               
+10                                                                              
+
+PL/SQL procedure successfully completed.
+
+SQL> SET SERVEROUTPUT ON;
+SQL> 
+SQL> DECLARE
+  2      v_rollno     NUMBER := &rollno;
+  3      v_name       VARCHAR2(50) := '&name';
+  4      v_mark1      NUMBER := &mark1;
+  5      v_mark2      NUMBER := &mark2;
+  6      v_mark3      NUMBER := &mark3;
+  7      v_total      NUMBER;
+  8      v_percentage NUMBER;
+  9      v_class      VARCHAR2(30);
+ 10  BEGIN
+ 11      v_total      := v_mark1 + v_mark2 + v_mark3;
+ 12      v_percentage := (v_total / 300) * 100;
+ 13  
+ 14      IF v_percentage >= 70 THEN
+ 15          v_class := 'Distinction';
+ 16      ELSIF v_percentage >= 60 THEN
+ 17          v_class := 'First Class';
+ 18      ELSIF v_percentage >= 50 THEN
+ 19          v_class := 'Second Class';
+ 20      ELSIF v_percentage >= 35 THEN
+ 21          v_class := 'Pass Class';
+ 22      ELSE
+ 23          v_class := 'Fail';
+ 24      END IF;
+ 25  
+ 26      DBMS_OUTPUT.PUT_LINE('----------------------------------------');
+ 27      DBMS_OUTPUT.PUT_LINE('           STUDENT MARK SHEET           ');
+ 28      DBMS_OUTPUT.PUT_LINE('----------------------------------------');
+ 29      DBMS_OUTPUT.PUT_LINE('Roll Number : ' || v_rollno);
+ 30      DBMS_OUTPUT.PUT_LINE('Name        : ' || v_name);
+ 31      DBMS_OUTPUT.PUT_LINE('Total Marks : ' || v_total || ' / 300');
+ 32      DBMS_OUTPUT.PUT_LINE('Percentage  : ' || ROUND(v_percentage, 2) || '%');
+ 33      DBMS_OUTPUT.PUT_LINE('Class       : ' || v_class);
+ 34      DBMS_OUTPUT.PUT_LINE('----------------------------------------');
+ 35  END;
+ 36  /
+Enter value for rollno: 25
+old   2:     v_rollno     NUMBER := &rollno;
+new   2:     v_rollno     NUMBER := 25;
+Enter value for name: 12
+old   3:     v_name       VARCHAR2(50) := '&name';
+new   3:     v_name       VARCHAR2(50) := '12';
+Enter value for mark1: 
+old   4:     v_mark1      NUMBER := &mark1;
+new   4:     v_mark1      NUMBER := ;
+Enter value for mark2: 
+old   5:     v_mark2      NUMBER := &mark2;
+new   5:     v_mark2      NUMBER := ;
+Enter value for mark3: 
+old   6:     v_mark3      NUMBER := &mark3;
+new   6:     v_mark3      NUMBER := ;
+    v_mark1      NUMBER := ;
+                           *
+ERROR at line 4:
+ORA-06550: line 4, column 28: 
+PLS-00103: Encountered the symbol ";" when expecting one of the following: 
+( - + case mod new not null <an identifier> 
+<a double-quoted delimited-identifier> <a bind variable> avg 
+count current exists max min prior sql stddev sum variance 
+execute forall merge time timestamp interval date 
+<a string literal with character set specification> 
+<a number> <a single-quoted SQL string> pipe 
+<an alternatively-quoted string literal with character set specification> 
+<an alternatively-quoted S 
+ORA-06550: line 5, column 28: 
+PLS-00103: Encountered the symbol ";" when expecting one of the following: 
+( - + case mod new not null <an identifier> 
+<a double-quoted delimited-identifier> <a bind variable> avg 
+count current exists max min prior sql stddev su 
+ORA-06550: line 6, column 28: 
+PLS-00103: Encountered the symbol ";" when expecting one of the following: 
+( - + case mod new not null <an identifier> 
+<a double-quoted delimited-identifier> <a bind variable>
+
+
+SQL> 
+SQL> SET SERVEROUTPUT ON;
+SQL> 
+SQL> DECLARE
+  2      v_rollno     NUMBER := 101;
+  3      v_name       VARCHAR2(50) := 'John Doe';
+  4      v_mark1      NUMBER := 75;
+  5      v_mark2      NUMBER := 82;
+  6      v_mark3      NUMBER := 68;
+  7      v_total      NUMBER;
+  8      v_percentage NUMBER;
+  9      v_class      VARCHAR2(30);
+ 10  BEGIN
+ 11      v_total      := v_mark1 + v_mark2 + v_mark3;
+ 12      v_percentage := (v_total / 300) * 100;
+ 13  
+ 14      IF v_percentage >= 70 THEN
+ 15          v_class := 'Distinction';
+ 16      ELSIF v_percentage >= 60 THEN
+ 17          v_class := 'First Class';
+ 18      ELSIF v_percentage >= 50 THEN
+ 19          v_class := 'Second Class';
+ 20      ELSIF v_percentage >= 35 THEN
+ 21          v_class := 'Pass Class';
+ 22      ELSE
+ 23          v_class := 'Fail';
+ 24      END IF;
+ 25  
+ 26      DBMS_OUTPUT.PUT_LINE('----------------------------------------');
+ 27      DBMS_OUTPUT.PUT_LINE('           STUDENT MARK SHEET           ');
+ 28      DBMS_OUTPUT.PUT_LINE('----------------------------------------');
+ 29      DBMS_OUTPUT.PUT_LINE('Roll Number : ' || v_rollno);
+ 30      DBMS_OUTPUT.PUT_LINE('Name        : ' || v_name);
+ 31      DBMS_OUTPUT.PUT_LINE('Total Marks : ' || v_total || ' / 300');
+ 32      DBMS_OUTPUT.PUT_LINE('Percentage  : ' || ROUND(v_percentage, 2) || '%');
+ 33      DBMS_OUTPUT.PUT_LINE('Class       : ' || v_class);
+ 34      DBMS_OUTPUT.PUT_LINE('----------------------------------------');
+ 35  END;
+ 36  /
+----------------------------------------                                        
+STUDENT MARK SHEET                                                              
+----------------------------------------                                        
+Roll Number : 101                                                               
+Name        : John Doe                                                          
+Total Marks : 225 / 300                                                         
+Percentage  : 75%                                                               
+Class       : Distinction                                                       
+----------------------------------------                                        
+
+PL/SQL procedure successfully completed.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> SET SERVEROUTPUT ON;
+SQL> 
+SQL> DECLARE
+  2      v_num     NUMBER := 12;
+  3      v_counter NUMBER := 1;
+  4  BEGIN
+  5      WHILE v_counter <= 5 LOOP
+  6          DBMS_OUTPUT.PUT_LINE(v_num);
+  7          v_num := v_num + 20;
+  8          v_counter := v_counter + 1;
+  9      END LOOP;
+ 10  END;
+ 11  /
+12                                                                              
+32                                                                              
+52                                                                              
+72                                                                              
+92                                                                              
+
+PL/SQL procedure successfully completed.
+
+SQL> SET SERVEROUTPUT ON;
+SQL> 
+SQL> DECLARE
+  2      v_n     NUMBER := &n;
+  3      v_term  NUMBER := 1;
+  4      v_sum   NUMBER := 0;
+  5  BEGIN
+  6      FOR i IN 1..v_n LOOP
+  7          v_sum := v_sum + v_term;
+  8          v_term := v_term + 3;
+  9      END LOOP;
+ 10  
+ 11      DBMS_OUTPUT.PUT_LINE('Sum of the series up to ' || v_n || ' terms is: ' || v_sum);
+ 12  END;
+ 13  /
+Enter value for n: 23
+old   2:     v_n     NUMBER := &n;
+new   2:     v_n     NUMBER := 23;
+Sum of the series up to 23 terms is: 782                                        
+
+PL/SQL procedure successfully completed.
+
+SQL> SET SERVEROUTPUT ON;DECLARE    v_n     NUMBER := 4;    v_term  NUMBER := 1;    v_sum   NUMBER := 0;BEGIN    FOR i IN 1..v_n LOOP        v_sum := v_sum + v_term;        v_term := v_term + 3;    END LOOP;        DBMS_OUTPUT.PUT_LINE('Sum of the series up to ' || v_n || ' terms is: ' || v_sum);END;/
+SP2-0158: unknown SET option ";DECLARE"
+SQL> 
+SQL> SET SERVEROUTPUT ON;
+SQL> 
+SQL> DECLARE
+  2      v_n     NUMBER := 4;
+  3      v_term  NUMBER := 1;
+  4      v_sum   NUMBER := 0;
+  5  BEGIN
+  6      FOR i IN 1..v_n LOOP
+  7          v_sum := v_sum + v_term;
+  8          v_term := v_term + 3;
+  9      END LOOP;
+ 10  
+ 11      DBMS_OUTPUT.PUT_LINE('Sum of the series up to ' || v_n || ' terms is: ' || v_sum);
+ 12  END;
+ 13  /
+Sum of the series up to 4 terms is: 22                                          
+
+PL/SQL procedure successfully completed.
+
+SQL> SET SERVEROUTPUT ON;
+SQL> 
+SQL> DECLARE
+  2      v_n     NUMBER := &n;
+  3      v_t1    NUMBER := 0;
+  4      v_t2    NUMBER := 1;
+  5      v_next  NUMBER;
+  6  BEGIN
+  7      DBMS_OUTPUT.PUT('Fibonacci Series: ');
+  8  
+  9      IF v_n >= 1 THEN
+ 10          DBMS_OUTPUT.PUT(v_t1 || ' ');
+ 11      END IF;
+ 12  
+ 13      IF v_n >= 2 THEN
+ 14          DBMS_OUTPUT.PUT(v_t2 || ' ');
+ 15      END IF;
+ 16  
+ 17      FOR i IN 3..v_n LOOP
+ 18          v_next := v_t1 + v_t2;
+ 19          DBMS_OUTPUT.PUT(v_next || ' ');
+ 20          v_t1 := v_t2;
+ 21          v_t2 := v_next;
+ 22      END LOOP;
+ 23  
+ 24      DBMS_OUTPUT.PUT_LINE('');
+ 25  END;
+ 26  /
+Enter value for n: 56
+old   2:     v_n     NUMBER := &n;
+new   2:     v_n     NUMBER := 56;
+Fibonacci Series: 0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584    
+4181 6765 10946 17711 28657 46368 75025 121393 196418 317811 514229 832040      
+1346269 2178309 3524578 5702887 9227465 14930352 24157817 39088169 63245986     
+102334155 165580141 267914296 433494437 701408733 1134903170 1836311903         
+2971215073 4807526976 7778742049 12586269025 20365011074 32951280099 53316291173
+86267571272 139583862445                                                        
+
+PL/SQL procedure successfully completed.
+
+SQL> SET SERVEROUTPUT ON;
+SQL> 
+SQL> DECLARE
+  2      v_n     NUMBER := &n;
+  3      v_t1    NUMBER := 0;
+  4      v_t2    NUMBER := 1;
+  5      v_next  NUMBER;
+  6  BEGIN
+  7      DBMS_OUTPUT.PUT('Fibonacci Series: ');
+  8  
+  9      IF v_n >= 1 THEN
+ 10          DBMS_OUTPUT.PUT(v_t1 || ' ');
+ 11      END IF;
+ 12  
+ 13      IF v_n >= 2 THEN
+ 14          DBMS_OUTPUT.PUT(v_t2 || ' ');
+ 15      END IF;
+ 16  
+ 17      FOR i IN 3..v_n LOOP
+ 18          v_next := v_t1 + v_t2;
+ 19          DBMS_OUTPUT.PUT(v_next || ' ');
+ 20          v_t1 := v_t2;
+ 21          v_t2 := v_next;
+ 22      END LOOP;
+ 23  
+ 24      DBMS_OUTPUT.PUT_LINE('');
+ 25  END;
+ 26  /
+Enter value for n: 2
+old   2:     v_n     NUMBER := &n;
+new   2:     v_n     NUMBER := 2;
+Fibonacci Series: 0 1                                                           
+
+PL/SQL procedure successfully completed.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> SET SERVEROUTPUT ON;
+SQL> 
+SQL> DECLARE
+  2      v_num  NUMBER := &num;
+  3      v_fact NUMBER := 1;
+  4  BEGIN
+  5      IF v_num < 0 THEN
+  6          DBMS_OUTPUT.PUT_LINE('Factorial is not defined for negative numbers.');
+  7      ELSE
+  8          FOR i IN 1..v_num LOOP
+  9              v_fact := v_fact * i;
+ 10          END LOOP;
+ 11  
+ 12          DBMS_OUTPUT.PUT_LINE('Factorial of ' || v_num || ' is: ' || v_fact);
+ 13      END IF;
+ 14  END;
+ 15  /
+Enter value for num: 24
+old   2:     v_num  NUMBER := &num;
+new   2:     v_num  NUMBER := 24;
+Factorial of 24 is: 620448401733239439360000                                    
+
+PL/SQL procedure successfully completed.
+
+SQL> SET SERVEROUTPUT ON;
+SQL> 
+SQL> DECLARE
+  2      v_num  NUMBER := &num;
+  3      v_fact NUMBER := 1;
+  4  BEGIN
+  5      IF v_num < 0 THEN
+  6          DBMS_OUTPUT.PUT_LINE('Factorial is not defined for negative numbers.');
+  7      ELSE
+  8          FOR i IN 1..v_num LOOP
+  9              v_fact := v_fact * i;
+ 10          END LOOP;
+ 11  
+ 12          DBMS_OUTPUT.PUT_LINE('Factorial of ' || v_num || ' is: ' || v_fact);
+ 13      END IF;
+ 14  END;
+ 15  /
+Enter value for num: 5
+old   2:     v_num  NUMBER := &num;
+new   2:     v_num  NUMBER := 5;
+Factorial of 5 is: 120                                                          
+
+PL/SQL procedure successfully completed.
+
+SQL> SET SERVEROUTPUT ON;
+SQL> 
+SQL> DECLARE
+  2      v_num NUMBER := &num;
+  3  BEGIN
+  4      IF v_num > 0 THEN
+  5          DBMS_OUTPUT.PUT_LINE(v_num || ' is a Positive number.');
+  6      ELSIF v_num < 0 THEN
+  7          DBMS_OUTPUT.PUT_LINE(v_num || ' is a Negative number.');
+  8      ELSE
+  9          DBMS_OUTPUT.PUT_LINE('The number is Zero.');
+ 10      END IF;
+ 11  END;
+ 12  /
+Enter value for num: 8
+old   2:     v_num NUMBER := &num;
+new   2:     v_num NUMBER := 8;
+8 is a Positive number.                                                         
+
+PL/SQL procedure successfully completed.
+
+SQL> SET SERVEROUTPUT ON;
+SQL> 
+SQL> DECLARE
+  2      v_char CHAR(1) := '&enter_char';
+  3  BEGIN
+  4      IF REGEXP_LIKE(v_char, '^[A-Za-z]$') THEN
+  5          DBMS_OUTPUT.PUT_LINE('''' || v_char || ''' is a Letter.');
+  6      ELSIF REGEXP_LIKE(v_char, '^[0-9]$') THEN
+  7          DBMS_OUTPUT.PUT_LINE('''' || v_char || ''' is a Digit.');
+  8      ELSE
+  9          DBMS_OUTPUT.PUT_LINE('''' || v_char || ''' is neither a Letter nor a Digit.');
+ 10      END IF;
+ 11  END;
+ 12  /
+Enter value for enter_char: i
+old   2:     v_char CHAR(1) := '&enter_char';
+new   2:     v_char CHAR(1) := 'i';
+'i' is a Letter.                                                                
+
+PL/SQL procedure successfully completed.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> 
