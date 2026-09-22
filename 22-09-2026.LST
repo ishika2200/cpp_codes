@@ -1,0 +1,607 @@
+
+SQL>  SET SERVEROUTPUT ON;
+SQL> 
+SQL>  DECLARE
+  2       i NUMBER;
+  3       j NUMBER;
+  4       flag NUMBER;
+  5   BEGIN
+  6       FOR i IN 2..50 LOOP
+  7           flag := 0;
+  8  
+  9           FOR j IN 2..TRUNC(SQRT(i)) LOOP
+ 10               IF MOD(i, j) = 0 THEN
+ 11                   flag := 1;
+ 12                   EXIT;
+ 13               END IF;
+ 14           END LOOP;
+ 15  
+ 16           IF flag = 0 THEN
+ 17               DBMS_OUTPUT.PUT_LINE(i);
+ 18           END IF;
+ 19       END LOOP;
+ 20   END;
+ 21   /
+2                                                                               
+3                                                                               
+5                                                                               
+7                                                                               
+11                                                                              
+13                                                                              
+17                                                                              
+19                                                                              
+23                                                                              
+29                                                                              
+31                                                                              
+37                                                                              
+41                                                                              
+43                                                                              
+47                                                                              
+
+PL/SQL procedure successfully completed.
+
+SQL> desc employees;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                    NOT NULL NUMBER
+ EMP_NAME                                           VARCHAR2(50)
+ SALARY                                             NUMBER
+
+SQL> CREATE TABLE employees (
+  2      employee_id  NUMBER(5) PRIMARY KEY,
+  3      first_name   VARCHAR2(30),
+  4      last_name    VARCHAR2(30),
+  5      email        VARCHAR2(50),
+  6      phone_number VARCHAR2(15),
+  7      hire_date    DATE,
+  8      job_id       VARCHAR2(20),
+  9      salary       NUMBER(10,2)
+ 10  );
+CREATE TABLE employees (
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> CREATE TABLE employe (
+  2  employee_id  NUMBER(5) PRIMARY KEY,
+  3  first_name   VARCHAR2(30),
+  4  last_name    VARCHAR2(30),
+  5  email        VARCHAR2(50),
+  6  phone_number VARCHAR2(15),
+  7  hire_date    DATE,
+  8  job_id       VARCHAR2(20),
+  9  salary       NUMBER(10,2)
+ 10  );
+
+Table created.
+
+SQL> INSERT INTO employees
+  2  VALUES (45, 'Rahul', 'Patel', 'rahul@gmail.com',
+  3          '9876543210', TO_DATE('15-01-2020','DD-MM-YYYY'),
+  4          'IT_PROG', 50000);
+INSERT INTO employees
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 
+SQL> INSERT INTO employees
+  2  VALUES (46, 'Amit', 'Shah', 'amit@gmail.com',
+  3          '9876543211', TO_DATE('20-03-2021','DD-MM-YYYY'),
+  4          'HR_MGR', 60000);
+INSERT INTO employees
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 
+SQL> INSERT INTO employees
+  2  VALUES (47, 'Neha', 'Joshi', 'neha@gmail.com',
+  3          '9876543212', TO_DATE('10-07-2022','DD-MM-YYYY'),
+  4          'SALES', 45000);
+INSERT INTO employees
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> 
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> INSERT INTO employees
+  2  (employee_id, first_name, last_name, email, phone_number, hire_date, job_id, salary)
+  3  VALUES
+  4  (45, 'Rahul', 'Patel', 'rahul@gmail.com', '9876543210',
+  5   TO_DATE('15-01-2020', 'DD-MM-YYYY'), 'IT_PROG', 50000);
+(employee_id, first_name, last_name, email, phone_number, hire_date, job_id, salary)
+                                                                     *
+ERROR at line 2:
+ORA-00904: "JOB_ID": invalid identifier 
+
+
+SQL> 
+SQL> INSERT INTO employees
+  2  (employee_id, first_name, last_name, email, phone_number, hire_date, job_id, salary)
+  3  VALUES
+  4  (46, 'Amit', 'Shah', 'amit@gmail.com', '9876543211',
+  5   TO_DATE('20-03-2021', 'DD-MM-YYYY'), 'HR_MGR', 60000);
+(employee_id, first_name, last_name, email, phone_number, hire_date, job_id, salary)
+                                                                     *
+ERROR at line 2:
+ORA-00904: "JOB_ID": invalid identifier 
+
+
+SQL> 
+SQL> INSERT INTO employees
+  2  (employee_id, first_name, last_name, email, phone_number, hire_date, job_id, salary)
+  3  VALUES
+  4  (47, 'Neha', 'Joshi', 'neha@gmail.com', '9876543212',
+  5   TO_DATE('10-07-2022', 'DD-MM-YYYY'), 'SALES', 45000);
+(employee_id, first_name, last_name, email, phone_number, hire_date, job_id, salary)
+                                                                     *
+ERROR at line 2:
+ORA-00904: "JOB_ID": invalid identifier 
+
+
+SQL>  INSERT INTO employe(employee_id, first_name, last_name, email, phone_number, hire_date, job_id, salary)
+  2  VALUES
+  3  (45, 'Rahul', 'Patel', 'rahul@gmail.com', '9876543210',
+  4   TO_DATE('15-01-2020', 'DD-MM-YYYY'), 'IT_PROG', 50000);
+
+1 row created.
+
+SQL> INSERT INTO employe (employee_id, first_name, last_name, email, phone_number, hire_date, job_id, salary)
+  2  VALUES
+  3  (46, 'Amit', 'Shah', 'amit@gmail.com', '9876543211',
+  4   TO_DATE('20-03-2021', 'DD-MM-YYYY'), 'HR_MGR', 60000);
+
+1 row created.
+
+SQL> INSERT INTO employe  (employee_id, first_name, last_name, email, phone_number, hire_date, job_id, salary)
+  2   VALUES
+  3   (47, 'Neha', 'Joshi', 'neha@gmail.com', '9876543212',
+  4    TO_DATE('10-07-2022', 'DD-MM-YYYY'), 'SALES', 45000);
+
+1 row created.
+
+SQL> SELECT * FROM employees;
+
+no rows selected
+
+SQL> SELECT * FROM employe;
+
+EMPLOYEE_ID FIRST_NAME                     LAST_NAME                            
+----------- ------------------------------ ------------------------------       
+EMAIL                                              PHONE_NUMBER    HIRE_DATE    
+-------------------------------------------------- --------------- ---------    
+JOB_ID                   SALARY                                                 
+-------------------- ----------                                                 
+         45 Rahul                          Patel                                
+rahul@gmail.com                                    9876543210      15-JAN-20    
+IT_PROG                   50000                                                 
+                                                                                
+         46 Amit                           Shah                                 
+amit@gmail.com                                     9876543211      20-MAR-21    
+HR_MGR                    60000                                                 
+
+EMPLOYEE_ID FIRST_NAME                     LAST_NAME                            
+----------- ------------------------------ ------------------------------       
+EMAIL                                              PHONE_NUMBER    HIRE_DATE    
+-------------------------------------------------- --------------- ---------    
+JOB_ID                   SALARY                                                 
+-------------------- ----------                                                 
+                                                                                
+         47 Neha                           Joshi                                
+neha@gmail.com                                     9876543212      10-JUL-22    
+SALES                     45000                                                 
+                                                                                
+
+SQL> SET SERVEROUTPUT ON;
+SQL> 
+SQL> DECLARE
+  2      v_emp employees%ROWTYPE;
+  3  BEGIN
+  4      SELECT *
+  5      INTO v_emp
+  6      FROM employees
+  7      WHERE employee_id = 45;
+  8  
+  9      DBMS_OUTPUT.PUT_LINE('Employee ID : ' || v_emp.employee_id);
+ 10      DBMS_OUTPUT.PUT_LINE('First Name  : ' || v_emp.first_name);
+ 11      DBMS_OUTPUT.PUT_LINE('Last Name   : ' || v_emp.last_name);
+ 12      DBMS_OUTPUT.PUT_LINE('Email       : ' || v_emp.email);
+ 13      DBMS_OUTPUT.PUT_LINE('Phone       : ' || v_emp.phone_number);
+ 14      DBMS_OUTPUT.PUT_LINE('Hire Date   : ' || v_emp.hire_date);
+ 15      DBMS_OUTPUT.PUT_LINE('Job ID      : ' || v_emp.job_id);
+ 16      DBMS_OUTPUT.PUT_LINE('Salary      : ' || v_emp.salary);
+ 17  END;
+ 18  /
+    WHERE employee_id = 45;
+          *
+ERROR at line 7:
+ORA-06550: line 7, column 11: 
+PL/SQL: ORA-00904: "EMPLOYEE_ID": invalid identifier 
+ORA-06550: line 4, column 5: 
+PL/SQL: SQL Statement ignored 
+ORA-06550: line 9, column 52: 
+PLS-00302: component 'EMPLOYEE_ID' must be declared 
+ORA-06550: line 9, column 5: 
+PL/SQL: Statement ignored 
+ORA-06550: line 10, column 52: 
+PLS-00302: component 'FIRST_NAME' must be declared 
+ORA-06550: line 10, column 5: 
+PL/SQL: Statement ignored 
+ORA-06550: line 11, column 52: 
+PLS-00302: component 'LAST_NAME' must be declared 
+ORA-06550: line 11, column 5: 
+PL/SQL: Statement ignored 
+ORA-06550: line 12, column 52: 
+PLS-00302: component 'EMAIL' must be declared 
+ORA-06550: line 12, column 5: 
+PL/SQL: Statement ignored 
+ORA-06550: line 13, column 52: 
+PLS-00302: component 'PHONE_NUMBER' must be declared 
+ORA-06550: line 13, column 5: 
+PL/SQL: Statement ignored 
+ORA-06550: line 14, column 52: 
+PLS-00302: component 'HIRE_DATE' must be declared 
+ORA-06550: line 14, column 5: 
+PL/SQL: Statement ignored 
+ORA-06550: line 15, column 52: 
+PLS-00302: component 'JOB_ID
+
+
+SQL> SET SERVEROUTPUT ON;
+SQL> 
+SQL> DECLARE
+  2      v_emp employees%ROWTYPE;
+  3   SET SERVEROUTPUT ON;
+  4  
+  5   DECLARE
+  6       v_emp employees%ROWTYPE;
+  7   BEGIN
+  8       SELECT *
+  9       INTO v_emp
+ 10       FROM employees
+ 11       WHERE employee_id = 45;
+ 12  
+ 13       DBMS_OUTPUT.PUT_LINE('Employee ID : ' || v_emp.employee_id);
+ 14       DBMS_OUTPUT.PUT_LINE('First Name  : ' || v_emp.first_name);
+ 15       DBMS_OUTPUT.PUT_LINE('Last Name   : ' || v_emp.last_name);
+ 16       DBMS_OUTPUT.PUT_LINE('Email       : ' || v_emp.email);
+ 17       DBMS_OUTPUT.PUT_LINE('Phone       : ' || v_emp.phone_number);
+ 18       DBMS_OUTPUT.PUT_LINE('Hire Date   : ' || v_emp.hire_date);
+ 19       DBMS_OUTPUT.PUT_LINE('Job ID      : ' || v_emp.job_id);
+ 20       DBMS_OUTPUT.PUT_LINE('Salary      : ' || v_emp.salary);
+ 21   END;
+ 22   /
+ SET SERVEROUTPUT ON;
+                  *
+ERROR at line 3:
+ORA-06550: line 3, column 19: 
+PLS-00103: Encountered the symbol "ON" when expecting one of the following: 
+:= . ( @ % ; not null range default character 
+
+
+SQL> SET SERVEROUTPUT ON;
+SQL> 
+SQL> DECLARE
+  2      v_emp employe%ROWTYPE;
+  3  BEGIN
+  4      SELECT *
+  5      INTO v_emp
+  6      FROM employe
+  7      WHERE employee_id = 45;
+  8  
+  9      DBMS_OUTPUT.PUT_LINE('Employee ID : ' || v_emp.employee_id);
+ 10      DBMS_OUTPUT.PUT_LINE('First Name  : ' || v_emp.first_name);
+ 11      DBMS_OUTPUT.PUT_LINE('Last Name   : ' || v_emp.last_name);
+ 12      DBMS_OUTPUT.PUT_LINE('Email       : ' || v_emp.email);
+ 13      DBMS_OUTPUT.PUT_LINE('Phone       : ' || v_emp.phone_number);
+ 14      DBMS_OUTPUT.PUT_LINE('Hire Date   : ' || v_emp.hire_date);
+ 15      DBMS_OUTPUT.PUT_LINE('Job ID      : ' || v_emp.job_id);
+ 16      DBMS_OUTPUT.PUT_LINE('Salary      : ' || v_emp.salary);
+ 17  END;
+ 18  /
+Employee ID : 45                                                                
+First Name  : Rahul                                                             
+Last Name   : Patel                                                             
+Email       : rahul@gmail.com                                                   
+Phone       : 9876543210                                                        
+Hire Date   : 15-JAN-20                                                         
+Job ID      : IT_PROG                                                           
+Salary      : 50000                                                             
+
+PL/SQL procedure successfully completed.
+
+SQL> CREATE TABLE Student
+  2  (
+  3      Id NUMBER PRIMARY KEY,
+  4      fname VARCHAR2(30),
+  5      lname VARCHAR2(30),
+  6      city VARCHAR2(30)
+  7  );
+CREATE TABLE Student
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL>  CREATE TABLE stud3 (
+  2       Id NUMBER PRIMARY KEY,
+  3       fname VARCHAR2(30),
+  4       lname VARCHAR2(30),
+  5       city VARCHAR2(30)
+  6   );
+ CREATE TABLE stud3 (
+              *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL>  CREATE TABLE school_stud Id NUMBER PRIMARY KEY,
+  2   fname VARCHAR2(30),
+  3   lname VARCHAR2(30),
+  4   city VARCHAR2(30)
+  5  ;
+ CREATE TABLE school_stud Id NUMBER PRIMARY KEY,
+                          *
+ERROR at line 1:
+ORA-00922: missing or invalid option 
+
+
+SQL> CREATE TABLE school_stud( Id NUMBER PRIMARY KEY,  Id NUMBER PRIMARY KEY,
+  2    fname VARCHAR2(30),
+  3    lname VARCHAR2(30),
+  4    city VARCHAR2(30));
+CREATE TABLE school_stud( Id NUMBER PRIMARY KEY,  Id NUMBER PRIMARY KEY,
+                                                  *
+ERROR at line 1:
+ORA-00957: duplicate column name 
+
+
+SQL> CREATE TABLE school_Stud
+  2  (
+  3      Id NUMBER PRIMARY KEY,
+  4      fname VARCHAR2(30),
+  5      lname VARCHAR2(30),
+  6      city VARCHAR2(30)
+  7  );
+
+Table created.
+
+SQL> INSERT INTO school_stud VALUES (1, 'Rahul', 'Patel', 'Ahmedabad');
+
+1 row created.
+
+SQL> INSERT INTO school_stud VALUES (2, 'Amit', 'Shah', 'Surat');
+
+1 row created.
+
+SQL> INSERT INTO school_stud VALUES (3, 'Neha', 'Joshi', 'Vadodara');
+
+1 row created.
+
+SQL> SET SERVEROUTPUT ON;
+SQL> 
+SQL> CREATE OR REPLACE PROCEDURE display_school_students
+  2  IS
+  3      CURSOR c_student IS
+  4          SELECT Id, fname, lname, city
+  5          FROM school_stud;
+  6  
+  7      v_id    school_stud.Id%TYPE;
+  8      v_fname school_stud.fname%TYPE;
+  9      v_lname school_stud.lname%TYPE;
+ 10      v_city  school_stud.city%TYPE;
+ 11  BEGIN
+ 12      OPEN c_student;
+ 13  
+ 14      LOOP
+ 15          FETCH c_student
+ 16          INTO v_id, v_fname, v_lname, v_city;
+ 17  
+ 18          EXIT WHEN c_student%NOTFOUND;
+ 19  
+ 20          DBMS_OUTPUT.PUT_LINE(
+ 21              'ID: ' || v_id ||
+ 22              ', Name: ' || v_fname || ' ' || v_lname ||
+ 23              ', City: ' || v_city
+ 24          );
+ 25      END LOOP;
+ 26  
+ 27      CLOSE c_student;
+ 28  END;
+ 29  /
+
+Procedure created.
+
+SQL> EXEC display_school_students;
+ID: 1, Name: Rahul Patel, City: Ahmedabad                                       
+ID: 2, Name: Amit Shah, City: Surat                                             
+ID: 3, Name: Neha Joshi, City: Vadodara                                         
+
+PL/SQL procedure successfully completed.
+
+SQL> SET SERVEROUTPUT ON;
+SQL> 
+SQL> DECLARE
+  2      v_id employees.employee_id%TYPE := &employee_id;
+  3      v_count NUMBER;
+  4  BEGIN
+  5      SELECT COUNT(*)
+  6      INTO v_count
+  7      FROM employees
+  8      WHERE employee_id = v_id;
+  9  
+ 10      IF v_count = 0 THEN
+ 11  
+ 12          INSERT INTO employees
+ 13          (employee_id, first_name, last_name, email, hire_date, job_id, salary)
+ 14          VALUES
+ 15          (v_id, '&first_name', '&last_name', '&email',
+ 16           SYSDATE, '&job_id', &salary);
+ 17  
+ 18          DBMS_OUTPUT.PUT_LINE('Employee inserted successfully.');
+ 19  
+ 20      ELSE
+ 21  
+ 22          DBMS_OUTPUT.PUT_LINE('Employee already exists.');
+ 23  
+ 24      END IF;
+ 25  
+ 26      COMMIT;
+ 27  END;
+ 28  /
+Enter value for employee_id: 45
+old   2:     v_id employees.employee_id%TYPE := &employee_id;
+new   2:     v_id employees.employee_id%TYPE := 45;
+Enter value for first_name: rohit
+Enter value for last_name: shrivastva
+Enter value for email: rohit2@gmail.com
+old  15:         (v_id, '&first_name', '&last_name', '&email',
+new  15:         (v_id, 'rohit', 'shrivastva', 'rohit2@gmail.com',
+Enter value for job_id: 233
+Enter value for salary: 50000
+old  16:          SYSDATE, '&job_id', &salary);
+new  16:          SYSDATE, '233', 50000);
+    v_id employees.employee_id%TYPE := 45;
+                   *
+ERROR at line 2:
+ORA-06550: line 2, column 20: 
+PLS-00302: component 'EMPLOYEE_ID' must be declared 
+ORA-06550: line 2, column 10: 
+PL/SQL: Item ignored 
+ORA-06550: line 8, column 25: 
+PLS-00320: the declaration of the type of this expression is incomplete or 
+malformed 
+ORA-06550: line 8, column 25: 
+PL/SQL: ORA-00904: "V_ID": invalid identifier 
+ORA-06550: line 5, column 5: 
+PL/SQL: SQL Statement ignored 
+ORA-06550: line 15, column 10: 
+PLS-00320: the declaration of the type of this expression is incomplete or 
+malformed 
+ORA-06550: line 15, column 10: 
+PL/SQL: ORA-00904: "V_ID": invalid identifier 
+ORA-06550: line 12, column 9: 
+PL/SQL: SQL Statement ignored 
+
+
+SQL>  DECLARE
+  2       v_id employees.employee_id%TYPE := &employee_id;
+  3       v_count NUMBER;
+  4   BEGIN
+  5       SELECT COUNT(*)
+  6       INTO v_count
+  7       FROM employees
+  8       WHERE employee_id = v_id;
+  9  
+ 10       IF v_count = 0 THEN
+ 11  
+ 12           INSERT INTO employees
+ 13           (employee_id, first_name, last_name, email, hire_date, job_id, salary)
+ 14           VALUES
+ 15           (v_id, '&first_name', '&last_name', '&email',
+ 16            SYSDATE, '&job_id', &salary);
+ 17  
+ 18           DBMS_OUTPUT.PUT_LINE('Employee inserted successfully.');
+ 19  
+ 20       ELSE
+ 21  
+ 22           DBMS_OUTPUT.PUT_LINE('Employee already exists.');
+ 23  
+ 24       END IF;
+ 25  
+ 26       COMMIT;
+ 27   END;
+ 28   /
+Enter value for employee_id: 48
+old   2:      v_id employees.employee_id%TYPE := &employee_id;
+new   2:      v_id employees.employee_id%TYPE := 48;
+Enter value for first_name: ;
+Enter value for last_name: gj;
+Enter value for email: uyd
+old  15:          (v_id, '&first_name', '&last_name', '&email',
+new  15:          (v_id, ';', 'gj;', 'uyd',
+Enter value for job_id: 
+Enter value for salary: sd
+old  16:           SYSDATE, '&job_id', &salary);
+new  16:           SYSDATE, '', sd);
+     v_id employees.employee_id%TYPE := 48;
+                    *
+ERROR at line 2:
+ORA-06550: line 2, column 21: 
+PLS-00302: component 'EMPLOYEE_ID' must be declared 
+ORA-06550: line 2, column 11: 
+PL/SQL: Item ignored 
+ORA-06550: line 8, column 26: 
+PLS-00320: the declaration of the type of this expression is incomplete or 
+malformed 
+ORA-06550: line 8, column 26: 
+PL/SQL: ORA-00904: "V_ID": invalid identifier 
+ORA-06550: line 5, column 6: 
+PL/SQL: SQL Statement ignored 
+ORA-06550: line 16, column 24: 
+PL/SQL: ORA-00984: column not allowed here 
+ORA-06550: line 12, column 10: 
+PL/SQL: SQL Statement ignored 
+
+
+SQL> SET SERVEROUTPUT ON;
+SQL> 
+SQL> DECLARE
+  2      CURSOR c_student IS
+  3          SELECT Id, fname, lname, city
+  4          FROM school_stud;
+  5  
+  6      v_id    school_stud.Id%TYPE;
+  7      v_fname school_stud.fname%TYPE;
+  8      v_lname school_stud.lname%TYPE;
+  9      v_city  school_stud.city%TYPE;
+ 10  
+ 11  BEGIN
+ 12      OPEN c_student;
+ 13  
+ 14      IF c_student%ISOPEN THEN
+ 15          DBMS_OUTPUT.PUT_LINE('Cursor is OPEN');
+ 16      END IF;
+ 17  
+ 18      LOOP
+ 19          FETCH c_student
+ 20          INTO v_id, v_fname, v_lname, v_city;
+ 21  
+ 22          IF c_student%NOTFOUND THEN
+ 23              DBMS_OUTPUT.PUT_LINE('No more records found.');
+ 24              EXIT;
+ 25          END IF;
+ 26  
+ 27          DBMS_OUTPUT.PUT_LINE(
+ 28              v_id || ' ' || v_fname || ' ' ||
+ 29              v_lname || ' ' || v_city
+ 30          );
+ 31      END LOOP;
+ 32  
+ 33      CLOSE c_student;
+ 34  
+ 35      IF NOT c_student%ISOPEN THEN
+ 36          DBMS_OUTPUT.PUT_LINE('Cursor is CLOSED');
+ 37      END IF;
+ 38  
+ 39  END;
+ 40  /
+Cursor is OPEN                                                                  
+1 Rahul Patel Ahmedabad                                                         
+2 Amit Shah Surat                                                               
+3 Neha Joshi Vadodara                                                           
+No more records found.                                                          
+Cursor is CLOSED                                                                
+
+PL/SQL procedure successfully completed.
+
+SQL> 
